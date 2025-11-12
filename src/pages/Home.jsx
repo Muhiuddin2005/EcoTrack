@@ -7,7 +7,7 @@ const Home = () => {
     <>
   
     <div className="grid grid-cols-3 gap-3">
-        {challenges.map((challenge) => (
+        {challenges.slice(0,6).map((challenge) => (
           <Challenge key={challenge._id} challenge={challenge} />
         ))}
       </div>
