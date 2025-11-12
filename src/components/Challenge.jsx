@@ -9,11 +9,6 @@ const Challenge = ({ challenge }) => {
           <div
             className="bg-white rounded-lg shadow-md flex flex-col"
           >
-            <img
-              src={challenge.imageUrl}
-              alt={challenge.title}
-              className="w-full h-48 object-cover"
-            />
             <div className="p-4 flex flex-col">
               <h2 className="text-lg font-semibold mb-1">{challenge.title}</h2>
               <p className="text-sm text-gray-500 mb-2">Category: {challenge.category}</p>

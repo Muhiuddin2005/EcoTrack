@@ -1,7 +1,9 @@
-import {useLoaderData } from 'react-router';
+import React from 'react';
+import { useLoaderData } from 'react-router';
 import Challenge from '../components/challenge';
 
-const Home = () => {
+
+const Challenges = () => {
     const challenges=useLoaderData();
     return (
     <>
@@ -16,4 +18,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Challenges;
