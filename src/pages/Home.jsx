@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, LabelList } from "recharts";
 import SkeletonChallengeCard from "../components/SkeletonChallengeCard";
+import Skeleton from "react-loading-skeleton";
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
   totalCO2Reduced: 0,
   totalWaterLiterSaved: 0
 });
+const [loading, setLoading] = useState(false);
 
 useEffect(() => {
   fetch("http://localhost:3000/live-stats")
@@ -37,14 +39,18 @@ const data = [
   
 
   useEffect(() => {
-    fetch("http://localhost:3000/latest-tips")
-      .then(res => res.json())
-      .then(data => setTips(data));
+  setLoading(true);
 
-    fetch("http://localhost:3000/upcoming-events")
-      .then(res => res.json())
-      .then(data => setEvents(data));
-  }, []);
+  Promise.all([
+    fetch("http://localhost:3000/latest-tips").then(res => res.json()),
+    fetch("http://localhost:3000/upcoming-events").then(res => res.json())
+  ])
+    .then(([tipsData, eventsData]) => {
+      setTips(tipsData);
+      setEvents(eventsData);
+    })
+    .finally(() => setLoading(false));
+}, []);
   return (
     <>
 
@@ -112,7 +118,18 @@ const data = [
   <div className="w-full max-w-4xl">
     <h2 className="text-2xl font-semibold mb-6 text-center">Recent Tips</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {tips.map((tip, index) => (
+      {loading
+            ? Array.from({ length: 4 }).map((index) => (
+                <div
+                  key={index}
+                  className="p-5 border rounded-2xl shadow-lg transition transform duration-300"
+                >
+                  <Skeleton height={20} width="70%" className="mb-2" />
+                  <Skeleton height={14} width="50%" className="mb-3" />
+                  <Skeleton count={3} height={12} className="mb-2" />
+                </div>
+              ))
+            :tips.map((tip, index) => (
         <div 
           key={index} 
           className="p-5 border rounded-2xl shadow-lg hover:shadow-2xl hover:bg-green-50 transition transform duration-300" 
@@ -128,7 +145,18 @@ const data = [
   <div className="w-full max-w-4xl">
     <h2 className="text-2xl font-semibold mb-6 text-center">Upcoming Events</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {events.map((event, index) => (
+      {loading
+            ? Array.from({ length: 4 }).map((index) => (
+                <div
+                  key={index}
+                  className="p-5 border rounded-2xl shadow-lg transition transform duration-300"
+                >
+                  <Skeleton height={20} width="70%" className="mb-2" />
+                  <Skeleton height={14} width="50%" className="mb-3" />
+                  <Skeleton count={3} height={12} className="mb-2" />
+                </div>
+              ))
+            :events.map((event, index) => (
         <div 
           key={index} 
           className="p-5 border rounded-2xl shadow-lg hover:shadow-2xl hover:bg-blue-50 transition transform duration-300"

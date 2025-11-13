@@ -15,7 +15,7 @@ const ChallengesPage = () => {
             <Challenge key={challenge._id} challenge={challenge} />
           ))
         :
-          Array.from({ length: challenges.length }).map((index) => (
+          Array.from({ length: 4 }).map((index) => (
             <SkeletonChallengeCard key={index} />
           ))}
       </div>
