@@ -1,4 +1,3 @@
-import { NavLink } from "react-router";
 import Challenge from "../components/challenge";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -10,6 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, LabelList, ResponsiveContainer } from "rec
 import SkeletonChallengeCard from "../components/SkeletonChallengeCard";
 import Skeleton from "react-loading-skeleton";
 import Spinner from "../components/Spinner";
+import MyLink from "../components/MyLink";
 
 
 const Home = () => {
@@ -77,12 +77,12 @@ if (loading) return <Spinner/>
               <p className="text-green-600 mb-4">
                 {challenge.description?.slice(0, 80)}...
               </p>
-              <NavLink
+              <MyLink
                 to={`/challenge-details/${challenge._id}`}
                 className="bg-green-500 text-white px-5 py-2 rounded-md font-medium hover:bg-green-600 transition-all duration-300"
               >
                 View Challenge
-              </NavLink>
+              </MyLink>
             </SwiperSlide>
           ))}
         </Swiper>

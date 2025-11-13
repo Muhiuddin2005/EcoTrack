@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import { AuthContext } from "../context/AuthContext";
+import MyLink from "../components/MyLink";
 const provider = new GoogleAuthProvider();
 
 const LogIn = () => {
@@ -93,12 +94,12 @@ const LogIn = () => {
               {show ? <FaEye /> : <IoEyeOff />}
             </span>
           </div>
-          <NavLink
+          <MyLink
             to="/forgot-password"
             className="mt-2 text-sm text-green-500 hover:underline"
           >
             Forgot password?
-          </NavLink>
+          </MyLink>
 
           <button className="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded-md transition-colors">
             Log In

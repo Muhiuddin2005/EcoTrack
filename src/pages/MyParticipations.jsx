@@ -2,7 +2,7 @@ import { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { BounceLoader } from "react-spinners";
-import { NavLink } from "react-router";
+import { MyLink } from "react-router";
 const MyParticipations = () => {
   const { user } = use(AuthContext);
   const [loading, setLoading] = useState(true);
@@ -32,8 +32,8 @@ const MyParticipations = () => {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="flex justify-around my-15 items-center">
-        <NavLink to="/add-challenge">Add Challenge</NavLink>
-        <NavLink to="/my-added-challenges">My Added Challenges</NavLink>
+        <MyLink to="/add-challenge">Add Challenge</MyLink>
+        <MyLink to="/my-added-challenges">My Added Challenges</MyLink>
       </div>
          {challenges.length==0?
       <div className="min-h-screen flex items-center justify-center text-gray-500">

@@ -1,5 +1,4 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import MyLink from './MyLink';
 
 const Challenge = ({ challenge }) => {
   return (
@@ -15,12 +14,12 @@ const Challenge = ({ challenge }) => {
       <p className="text-gray-600 mb-1">Duration: {challenge.duration} days</p>
       <p className="text-gray-600 mb-4">Impact: {challenge.impactMetric}</p>
       <p className="text-gray-600 mb-4">Participants: {challenge.participants}</p>
-      <NavLink
+      <MyLink
         to={`/challenge-details/${challenge._id}`}
         className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 text-center"
       >
         View Details
-      </NavLink>
+      </MyLink>
     </div>
   );
 };
