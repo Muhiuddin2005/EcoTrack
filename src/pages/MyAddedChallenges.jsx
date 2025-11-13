@@ -1,5 +1,6 @@
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { BounceLoader } from "react-spinners";
 
 const myAddedChallenges = () => {
   const { user } = use(AuthContext)
@@ -20,7 +21,13 @@ const myAddedChallenges = () => {
   }, [user])
 
   if (loading) {
-    return <div> Please wait!Loading...</div>
+    return  <div className="min-h-screen flex items-center justify-center">
+        <BounceLoader
+  color="#0ff051"
+  size={200}
+  speedMultiplier={3}
+/>
+      </div>
   }
   return (
     <div>

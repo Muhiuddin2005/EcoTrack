@@ -162,9 +162,10 @@ const data = [
           <LabelList dataKey="Water Saved (L)" position="inside" formatter={(value) => `${value} L`} />
         </Bar>
       </BarChart>
-      <div className="flex justify-between mt-2 px-8">
-        <span className="text-center w-1/2 text-blue-700 font-medium ml-8">Water Saved</span> 
-  <span className="text-center w-1/2 text-green-700 font-medium">CO₂ Reduced</span>
+      <div className="flex mt-2 px-8">
+        <span className="text-center w-1/2 text-green-700 font-medium ml-20">CO₂ Reduced</span>
+        <span className="text-center w-1/2 text-blue-700 font-medium ml-8 mr-15">Water Saved</span> 
+  
   
 </div>
     </div>

@@ -4,6 +4,7 @@ import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../firebase/firebase.config";
 import { AuthContext } from "../context/AuthContext";
+import { BounceLoader } from "react-spinners";
 
 const Navbar = () => {
   const {user,setUser,loading}=use(AuthContext);
@@ -93,8 +94,13 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex gap-3">
         {loading ? (
-          <span className="loading loading-spinner text-success loading-md"></span>
-        ) : user ? (
+          <div>
+        <BounceLoader
+  color="#0ff051"
+  size={50}
+  speedMultiplier={3}
+/>
+      </div> ) : user ? (
           <details className="dropdown dropdown-end">
             <summary className="btn m-1 flex items-center gap-2">
               <img

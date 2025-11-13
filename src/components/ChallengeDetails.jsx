@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthContext";
+import { BounceLoader } from "react-spinners";
 
 
 
@@ -90,7 +91,13 @@ const ChallengeDetails = () => {
 
 
   if (loading) {
-    return <div>Please wait!Loading...</div>;
+    return  <div className="min-h-screen flex items-center justify-center">
+        <BounceLoader
+  color="#0ff051"
+  size={200}
+  speedMultiplier={3}
+/>
+      </div>;
   }
 
   return (

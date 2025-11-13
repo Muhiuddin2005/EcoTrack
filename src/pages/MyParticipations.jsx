@@ -1,7 +1,7 @@
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
-
+import { BounceLoader } from "react-spinners";
 const MyParticipations = () => {
   const { user } = use(AuthContext);
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,13 @@ const MyParticipations = () => {
   }, [user]);
 
   if (loading) {
-    return <div> Please wait!Loading...</div>;
+    return  <div className="min-h-screen flex items-center justify-center">
+        <BounceLoader
+  color="#0ff051"
+  size={200}
+  speedMultiplier={3}
+/>
+      </div>;
   }
 
   return (
