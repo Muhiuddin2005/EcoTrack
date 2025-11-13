@@ -24,7 +24,7 @@ const Home = () => {
 const [loading, setLoading] = useState(true);
     useEffect(() => {
     Promise.all([
-      fetch("https://ass-10-sigma.vercel.app/challenges").then(res => res.json()),
+      fetch("http://localhost:3000/active-challenges").then(res => res.json()),
       fetch("http://localhost:3000/latest-tips").then(res => res.json()),
       fetch("http://localhost:3000/upcoming-events").then(res => res.json()),
       fetch("http://localhost:3000/live-stats").then(res => res.json())

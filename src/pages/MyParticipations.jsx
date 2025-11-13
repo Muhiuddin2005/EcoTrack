@@ -2,7 +2,7 @@ import { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { BounceLoader } from "react-spinners";
-import { MyLink } from "react-router";
+import MyLink from "../components/MyLink";
 const MyParticipations = () => {
   const { user } = use(AuthContext);
   const [loading, setLoading] = useState(true);
