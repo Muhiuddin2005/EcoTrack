@@ -13,6 +13,7 @@ import MyProfile from "../pages/MyProfile";
 import ErrorPage from "../pages/ErrorPage";
 import ChallengesPage from "../pages/ChallengesPage";
 import ForgotPassword from "../pages/ForgotPassword";
+import FilteredChallenges from "../pages/Filter";
 
 export const router = createBrowserRouter([
   {
@@ -64,21 +65,21 @@ export const router = createBrowserRouter([
           fetch(`https://ass-10-sigma.vercel.app/challenges/${params.id}`),
       },
       {
-        path: "/my-added-challenges",
-        element: (
-          <PrivateRoute>
-            <MyAddedChallenges />
-          </PrivateRoute>
-        ),
-      },
-      {
+            path: "/my-added-challenges",
+            element: (
+              <PrivateRoute>
+                <MyAddedChallenges />
+              </PrivateRoute>
+            ),
+          },
+          {
         path: "/participants",
-        element: (
-          <PrivateRoute>
+            element: (
+              <PrivateRoute>
             <MyParticipations />
-          </PrivateRoute>
-        ),
-      },
+              </PrivateRoute>
+            ),
+          },
       {
         path: "/profile",
         element: (

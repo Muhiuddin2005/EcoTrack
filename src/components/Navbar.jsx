@@ -117,7 +117,7 @@ const Navbar = () => {
                 <MyLink to="/participants">My Activities</MyLink>
               </li>
               <li>
-                <button onClick={logOut}>Logout</button>
+                <MyLink onClick={logOut}>Logout</MyLink>
               </li>
             </ul>
           </details>
