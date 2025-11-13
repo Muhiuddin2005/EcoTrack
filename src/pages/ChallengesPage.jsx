@@ -22,7 +22,7 @@ if (loading) return <Spinner/>
     return (
     <>
   
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {challenges.length > 0
         ? challenges.map((challenge) => (
             <Challenge key={challenge._id} challenge={challenge} />

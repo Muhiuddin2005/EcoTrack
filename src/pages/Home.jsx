@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, LabelList } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, LabelList, ResponsiveContainer } from "recharts";
 import SkeletonChallengeCard from "../components/SkeletonChallengeCard";
 import Skeleton from "react-loading-skeleton";
 import Spinner from "../components/Spinner";
@@ -90,7 +90,7 @@ if (loading) return <Spinner/>
 
         {/* Cards...................... */}
       </div>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {challenges.length > 0
         ? challenges.slice(0, 5).map((challenge) => (
             <Challenge key={challenge._id} challenge={challenge} />
@@ -174,8 +174,9 @@ if (loading) return <Spinner/>
       <p className="text-center mb-4">
         Total Participants: <strong>{stats.totalParticipants}</strong>
       </p>
-
-      <BarChart width={500} height={300} data={data}>
+<div className="w-full h-64 sm:h-72 md:h-80">
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart data={data}>
         <XAxis dataKey="metric" tick={false} axisLine={false} />
         <YAxis />
         <Bar dataKey="CO₂ Reduced (kg)" fill="#4CAF50">
@@ -185,6 +186,8 @@ if (loading) return <Spinner/>
           <LabelList dataKey="Water Saved (L)" position="inside" formatter={(value) => `${value} L`} />
         </Bar>
       </BarChart>
+       </ResponsiveContainer>
+  </div>
       <div className="flex mt-2 px-8">
         <span className="text-center w-1/2 text-green-700 font-medium ml-20">CO₂ Reduced</span>
         <span className="text-center w-1/2 text-blue-700 font-medium ml-8 mr-15">Water Saved</span> 

@@ -2,17 +2,18 @@ import { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { BounceLoader } from "react-spinners";
+import { NavLink } from "react-router";
 const MyParticipations = () => {
   const { user } = use(AuthContext);
   const [loading, setLoading] = useState(true);
-  const [challenge, setChallenge] = useState([]);
+  const [challenges, setChallenges] = useState([]);
 
   useEffect(() => {
     if (user && user.email) {
       fetch(`https://ass-10-sigma.vercel.app/participants?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
-          setChallenge(data);
+          setChallenges(data);
           setLoading(false);
         })
         .catch((e) => toast(e));
@@ -28,11 +29,42 @@ const MyParticipations = () => {
 />
       </div>;
   }
-
   return (
-    <div>
-       {challenge.length}
+    <div className="max-w-4xl mx-auto p-4">
+      <div className="flex justify-around my-15 items-center">
+        <NavLink to="/add-challenge">Add Challenge</NavLink>
+        <NavLink to="/my-added-challenges">My Added Challenges</NavLink>
       </div>
+         {challenges.length==0?
+      <div className="min-h-screen flex items-center justify-center text-gray-500">
+        You have not joined any challenges yet.
+      </div>:<div>
+        <h1 className="text-3xl font-bold mb-6 text-center">I have Joined</h1>
+      <div className="grid gap-4">
+        {challenges.map((p) => (
+          <div
+            key={p._id}
+            className="border rounded-lg p-4 shadow hover:shadow-lg transition"
+          >
+            <h2 className="text-xl font-semibold mb-2">
+              Challenge ID: {p._id}
+            </h2>
+            <p>
+              <span className="font-medium">Status:</span> {p.status}
+            </p>
+            <p>
+              <span className="font-medium">Progress:</span> {p.progress}%
+            </p>
+            <p>
+              <span className="font-medium">Joined On:</span>
+              {new Date(p.joinDate).toLocaleDateString()}
+            </p>
+          </div>
+        ))}
+      </div>
+      </div>}
+      
+    </div>
   );
 };
 
