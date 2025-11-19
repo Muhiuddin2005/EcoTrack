@@ -24,7 +24,8 @@
 - **React Router** – Client-side navigation  
 - **Tailwind CSS** – Modern utility-first styling  
 - **DaisyUI** – Prebuilt UI components  
-- **Firebase** – Authentication & backend services  
+- **Firebase** – Authentication & backend services
+- **MongoDB** – Database for storing challenge data and user progress
 - **Recharts** – Data visualization  
 - **Swiper.js** – Sliders & carousels  
 - **React Icons** – Icon library  
